@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="styleofcs.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="registrationForm">
+            <label for="name">Enter your name:</label>
+            <input type="text" placeholder="Enter your name" id="name" required>
+
+            <label for="dob">Enter your date of birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="arecanuts">Enter the number of arecanuts:</label>
+            <input type="number" id="arecanuts" required>
+
+            <label for="address">Enter your address:</label>
+            <textarea id="address" placeholder="Enter your address" rows="4" required></textarea>
+
+            <button type="button" onclick="generateQR()">Generate QR Code</button>
+        </form>
+
+        <div id="imgBox">
+            <img src="" id="qrImage">
+            <button onclick="downloadQR()">Download QR Code</button>
+        </div>
+    </div>
+
+    <script>
+        let imgBox = document.getElementById("imgBox");
+        let qrImage = document.getElementById("qrImage");
+        let registrationForm = document.getElementById("registrationForm");
+
+        function generateQR() {
+            if (!registrationForm.checkValidity()) {
+                alert("Please fill in all the required fields.");
+                return;
+            }
+
+            let name = document.getElementById("name").value;
+            let dob = document.getElementById("dob").value;
+            let arecanuts = document.getElementById("arecanuts").value;
+            let address = document.getElementById("address").value;
+
+            let userData = {
+                name: name,
+                dob: dob,
+                arecanuts: arecanuts,
+                address: address,
+
+            };
+
+            let qrData = JSON.stringify(userData);
+            qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(qrData);
+
+            imgBox.classList.add('show-img');
+        }
+
+        function downloadQR() {
+        
+            let downloadLink = document.createElement('a');
+
+            downloadLink.href = qrImage.src;
+
+            downloadLink.download = 'qrcode.png';
+
+            document.body.appendChild(downloadLink);
+
+            downloadLink.click();
+
+            document.body.removeChild(downloadLink);
+        }
+    </script>
+
+</body>
+
+</html>
+
+

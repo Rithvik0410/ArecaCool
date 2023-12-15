@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Model</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
+    <style>
+        #cropInfo {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .crop-image {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Prediction Model</h1>
+
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <div id="cropInfo">
+        <h2>Suitable Crops</h2>
+        <div id="cropImages"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['01/07/2023', '02/07/2023', '03/07/2023', '04/07/2023', '05/07/2023', '06/07/2023', '07/07/2023', '08/07/2023', '09/07/2023'],
+                datasets: [{
+                    label: 'Expected Watering',
+                    data: [50, 40, 60, 55, 70, 40, 50, 65, 55],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Current Watering',
+                    data: [45, 65, 35, 54, 95, 41, 50, 45, 56],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                onClick: function (event, elements) {
+                    if (elements.length > 0) {
+                        displayCropInfo();
+                    }
+                }
+            }
+        });
+
+        function displayCropInfo() {
+            var cropInfo = document.getElementById('cropInfo');
+            cropInfo.style.display = 'block';
+
+            var cropImages = document.getElementById('cropImages');
+            cropImages.innerHTML = '';
+
+            // Sample crop data (replace with your actual data)
+            var crops = [
+                { name: 'Crop 1', image: 'crop1.jpeg' },
+                { name: 'Crop 2', image: 'crop2.jpeg' },
+                { name: 'Crop 3', image: 'crop3.jpeg' },
+                { name: 'Crop 4', image: 'crop4.jpeg' }
+            ];
+
+            crops.forEach(function (crop) {
+                var cropImage = document.createElement('img');
+                cropImage.src = crop.image;
+                cropImage.alt = crop.name;
+                cropImage.className = 'crop-image';
+                cropImages.appendChild(cropImage);
+            });
+        }
+    </script>
+</body>
+
+</html>

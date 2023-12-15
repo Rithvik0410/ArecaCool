@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .count-box {
+            background-color: #4CAF50; 
+            padding: 10px; 
+            text-align: center;
+            margin: 20px 0; 
+        }
+
+        
+        .count-text {
+            color: #ffffff; 
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <div class="logo"><img src="logo.jpg" alt="logo"></div>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services" id="services-link">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="btn btn-sm" onclick="redirectToRegisterPage()">Register</button></li>
+            <li><button class="btn btn-sm" onclick="redirectToLoginPage()">Login</button></li>
+        </ul>
+        <div class="rightNav">
+            <input type="text" name="search" id="search">
+            <button class="btn btn-sm">Search</button>
+        </div>
+    </nav>
+
+    <section class="background firstsection">
+        <div class="box-main">
+           <div class="firsthalf">
+            <p class="text-big">The Areca Revolution!</p>
+            <p>"Preserving Nature, Sustaining Arecanut: Conserve Water, Cultivate Change." </p>
+                
+            </div>
+           </div>
+           <div class="secondhalf">
+             
+
+           </div>
+
+
+
+        </div>
+    </section>
+    <div class="count-box">
+        <p class="count-text">Farmers Registered: <span id="farmersCount">1568</span></p>
+        <p class="count-text">Water Saved: <span id="waterSaved">12000L</span></p>
+    </div>
+
+    <section class="section">
+        <div class="paras">
+        <p class="sectiontag text-big">Water Requirement: Arecanut plants require a substantial amount of water for optimal growth. Adequate and regular irrigation is crucial, especially during dry periods.
+            Well-Drained Soil: Arecanut plants prefer well-drained soils. Proper irrigation helps in maintaining soil moisture levels while preventing waterlogging, which can be detrimental to the roots.</p>
+        <p class="sectionsubtag text-small">Young Plant Care: Young arecanut plants need careful attention to irrigation. They should be watered regularly to establish a strong root system. Once established, they become more tolerant of variations in water availability.
+            Drip Irrigation: Drip irrigation is often recommended for arecanut cultivation. This method allows for controlled and efficient water distribution directly to the plant's root zone, minimizing water wastage and reducing the risk of diseases. </p>
+        </div>
+        <div class="thumbnail">
+            <img src="arecanut.jpg" alt="areca img" class="imgFluid">
+        </div>
+    </section>
+
+    <section class="section section-left">
+        <div class="paras">
+        <p class="sectiontag text-big">Mulching: Applying mulch around the base of the arecanut plants helps retain soil moisture, reduce evaporation, and suppress weed growth. This, in turn, can contribute to more efficient water use.
+            Irrigation Scheduling: Developing a proper irrigation schedule based on factors like soil moisture, weather conditions, and plant growth stage is essential. It helps ensure that the plants receive the right amount of water when they need it..</p>
+        <p class="sectionsubtag text-small">Water Quality: The quality of water used for irrigation is crucial. Arecanut plants are sensitive to water salinity, so it's essential to use good-quality water to prevent damage to the plants.
+            Seasonal Variation: Irrigation requirements may vary with the seasons. During the dry season, more frequent and consistent watering may be necessary, while during the rainy season, natural rainfall may contribute significantly to the water needs of the plants. </p>
+        </div>
+        <div class="thumbnail">
+            <img src="arecanut.jpg" alt="areca img" class="imgFluid">
+        </div>
+    </section>
+    
+    <section class="contact">
+        <h2 class="text-center">Contact Us</h2>
+        <div class="social">
+            <img  class="insta" src="instaicon.jpg">
+            <img  class="insta" src="Youtubeicon.png">
+            <img  class="insta" src="X.png">
+            
+        </div>
+    </section>
+    <script>
+         let farmersCount = 1568;
+         let waterSaved = 12000;
+
+        function updateCounts() {
+          document.getElementById("farmersCount").textContent = farmersCount;
+          document.getElementById("waterSaved").textContent = waterSaved + "L";
+    }
+        document.getElementById("services-link").addEventListener("click", function() {
+            window.location.href = "index.html";
+        });
+        function redirectToLoginPage() {
+            window.location.href = "login.html";}
+        
+        function redirectToRegisterPage() {
+            window.location.href = "qrindex.html";}
+
+        updateCounts();
+    </script>
+    
+</body>
+</html>
