@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArecaCool - Services </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8f7; /* Light green background color */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #2ecc71; /* Green header background color */
+            color: #fff; /* White text color */
+            padding: 10px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #2ecc71; /* Green heading color */
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .content > div {
+            flex-basis: 48%; /* Adjust as needed for spacing */
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%; /* Make sure images don't exceed their container */
+            height: auto;
+            width: 100%; /* Set a fixed width of 100% for consistent sizing */
+        }
+
+        .fixed-size-img {
+            width: 320px;
+            height: 520px;
+            object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+        }
+
+        footer {
+            background-color: #2ecc71; /* Green footer background color */
+            color: #fff; /* White text color */
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ArecaCool - Smart Farming Solutions</h1>
+        <p>Empowering Farmers with Real-time Data</p>
+    </header>
+
+    <section>
+        <h2>Real-time Monitoring and Analysis</h2>
+        <p>Track soil moisture, receive weather updates, and optimize water scheduling for your farm.</p>
+
+        <div class="content">
+            <div>
+                <h3>Soil Moisture Tracking</h3>
+                <p>Monitor your soil's moisture levels in real-time to make informed irrigation decisions.</p>
+            </div>
+            <div>
+                <img src="soil_moisture.jpeg" alt="Soil Moisture Image" class="fixed-size-img">
+            </div>
+
+            <div>
+                <h3>Weather Updates</h3>
+                <p>Stay informed with accurate and timely weather forecasts tailored to your farm's location.</p>
+            </div>
+            <div>
+                <img src="weather_update.png" alt="Weather Update Image" class="fixed-size-img">
+            </div>
+
+            <div>
+                <h3>Water Scheduling and Predictive Analysis</h3>
+                <p>Optimize your water usage with a customized schedule based on real-time data and weather forecasts.</p>
+                <p>Our advanced analytics help detect potential issues and provide actionable insights for preventive measures.</p>
+            </div>
+            <div>
+                <img src="predictive_analysis.png" alt="Predictive Analysis Image" class="fixed-size-img">
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us for personalized farming solutions: <a href="mailto:info@arecacool.com">info@arecacool.com</a></p>
+    </footer>
+</body>
+
+</html>
