@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgrecaCool Weather</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .search {
+            margin-bottom: 15px;
+        }
+
+        .search input {
+            width: 70%;
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .search button {
+            padding: 8px 15px;
+            border: 1px solid #3498db;
+            border-radius: 3px;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .weather {
+            display: none;
+        }
+
+        .weather img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .weather h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .col {
+            display: flex;
+            align-items: center;
+        }
+
+        .col img {
+            max-width: 30px;
+            margin-right: 10px;
+        }
+
+        .soil-moisture {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .soil-moisture h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <!-- Weather Card -->
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter city name" spellcheck="false" id="cityInput">
+            <button onclick="checkWeather()">Search</button>
+        </div>
+        <div class="weather">
+            <img src="images/rain.png" alt="weather-icon">
+            <h1 class="temp">21°C</h1>
+            <h2 class="city">Mumbai</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" alt="Humidity icon">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" alt="Wind icon">
+                    <div>
+                        <p class="wind">15 km/hr</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Water Gauge Card -->
+    <div class="card">
+        <!-- Water Level Heading -->
+        <h2>Water Level</h2>
+        
+        <!-- Water Gauge -->
+        <canvas id="waterGauge" width="200" height="200"></canvas>
+    </div>
+
+    <!-- Soil Moisture Card -->
+    <div class="card">
+        <!-- Soil Moisture Indicator -->
+        <div class="soil-moisture">
+            <img class="moisture-icon" src="images/moisture.png" alt="Moisture icon">
+            <p class="moisture-level"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ... (Keep your existing weather script here)
+    const apiKey = "d0332f49d31ceaa206d511cf141b846e";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
+
+    const searchBox = document.getElementById("cityInput");
+    const weatherIcon = document.querySelector(".weather img");
+    const moistureLevel = document.querySelector(".moisture-level");
+
+    async function checkWeather() {
+        try {
+            const city = searchBox.value;
+            const fullUrl = `${apiUrl}?q=${city}&units=metric&appid=${apiKey}`;
+            const response = await fetch(fullUrl);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = data.main.temp + "°C";
+            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
+
+            if (data.weather[0].main === "Clouds") {
+                weatherIcon.src = "images/clouds.png";
+            } else if (data.weather[0].main === "Clear") {
+                weatherIcon.src = "images/clear.png";
+            } else if (data.weather[0].main === "Rain") {
+                weatherIcon.src = "images/rain.png";
+            } else if (data.weather[0].main === "Drizzle") {
+                weatherIcon.src = "images/drizzle.png";
+            } else if (data.weather[0].main === "Mist") {
+                weatherIcon.src = "images/mist.png";
+            }
+
+            // Simulate changing soil moisture level (replace with actual data)
+            const randomMoistureLevel = Math.floor(Math.random() * 100);
+            moistureLevel.innerHTML = `Soil Moisture: ${randomMoistureLevel}%`;
+
+            document.querySelector(".weather").style.display = "block";
+            document.querySelector(".soil-moisture").style.display = "block";
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
+    }
+
+    // Add the water gauge code below
+    var waterCanvas = document.getElementById("waterGauge");
+    var waterCtx = waterCanvas.getContext("2d");
+    var waterCenterX = waterCanvas.width / 2;
+    var waterCenterY = waterCanvas.height / 2;
+    var waterRadius = waterCanvas.width / 2 - 10;
+    var waterLevel = Math.floor(Math.random() * 61);
+
+    function drawWaterGauge() {
+        waterCtx.clearRect(0, 0, waterCanvas.width, waterCanvas.height);
+
+        waterCtx.beginPath();
+        waterCtx.arc(waterCenterX, waterCenterY, waterRadius, 0, 2 * Math.PI);
+        waterCtx.strokeStyle = "#333";
+        waterCtx.lineWidth = 10;
+        waterCtx.stroke();
+
+        waterCtx.beginPath();
+        var endAngle = (waterLevel / 100) * Math.PI * 2;
+        waterCtx.arc(waterCenterX, waterCenterY, waterRadius, 0, endAngle);
+        waterCtx.strokeStyle = "#3498db";
+        waterCtx.lineWidth = 10;
+        waterCtx.stroke();
+
+        // Draw the needle
+        waterCtx.beginPath();
+        waterCtx.moveTo(waterCenterX, waterCenterY);
+        var needleLength = waterRadius * 0.8;
+        var needleAngle = endAngle - Math.PI / 2;
+        var needleX = waterCenterX + needleLength * Math.cos(needleAngle);
+        var needleY = waterCenterY + needleLength * Math.sin(needleAngle);
+        waterCtx.lineTo(needleX, needleY);
+        waterCtx.strokeStyle = "#e74c3c"; // Needle color
+        waterCtx.lineWidth = 2;
+        waterCtx.stroke();
+    }
+
+    // Draw the initial water gauge
+    drawWaterGauge();
+</script>
+
+</body>
+</html>
+
