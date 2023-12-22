@@ -30,7 +30,7 @@
             <div class="logo"><img src="logo.jpg" alt="logo"></div>
             <li><a href="#home">Home</a></li>
             <li><a href="#services" id="services-link">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" id="contact-link">Contact</a></li>
             <li><button class="btn btn-sm" onclick="redirectToRegisterPage()">Register</button></li>
             <li><button class="btn btn-sm" onclick="redirectToLoginPage()">Login</button></li>
         </ul>
@@ -105,6 +105,9 @@
     }
         document.getElementById("services-link").addEventListener("click", function() {
             window.location.href = "service.html";
+        });
+        document.getElementById("contact-link").addEventListener("click", function() {
+            window.location.href = "contact.html";
         });
         function redirectToLoginPage() {
             window.location.href = "login.html";}
