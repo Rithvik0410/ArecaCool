@@ -5,9 +5,11 @@ Welcome to the ArecaCool repository! This web application is designed to empower
 Features:
 **Homepage**
 
-Register and Login: Easily create an account with a unique ID to access personalized features.
-Dashboard
-Tree Count: Keep track of the total number of trees on your farm.
+*Register and Login: Easily create an account with a unique ID to access personalized features.*
+
+**Dashboard**
+
+*Tree Count: Keep track of the total number of trees on your farm.*
 Water Usage: Monitor the quantity of water used and saved, promoting water-efficient farming practices.
 Daily Log: Record and review daily activities and observations.
 Predictive Analysis:
