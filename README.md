@@ -3,6 +3,7 @@ ArecaCool
 Welcome to the ArecaCool repository! This web application is designed to empower farmers with data-driven insights, enabling them to make informed decisions for efficient and sustainable farming practices.
 
 Features:
+
 **Homepage**
 
 *Register and Login: Easily create an account with a unique ID to access personalized features.*
