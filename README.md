@@ -4,6 +4,7 @@ Welcome to the ArecaCool repository! This web application is designed to empower
 
 Features:
 **Homepage**
+
 Register and Login: Easily create an account with a unique ID to access personalized features.
 Dashboard
 Tree Count: Keep track of the total number of trees on your farm.
