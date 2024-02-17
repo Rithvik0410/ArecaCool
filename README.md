@@ -15,3 +15,4 @@ Crop Recommendation: Receive recommendations for suitable crops based on the ana
 Services:
 Real-time Weather: Access live weather updates, including humidity levels, to make timely decisions aligned with current weather conditions.
 Soil Moisture Monitoring: Keep an eye on real-time soil moisture levels for effective irrigation planning.
+Looks good when you read the features but there is no bckend developed yet.
