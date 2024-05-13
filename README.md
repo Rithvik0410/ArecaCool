@@ -10,6 +10,7 @@ Features:
 
 **Dashboard**
 
+
 *Tree Count: Keep track of the total number of trees on your farm.*
 *Water Usage: Monitor the quantity of water used and saved, promoting water-efficient farming practices.*
 
@@ -27,4 +28,6 @@ Features:
 
 *Soil Moisture Monitoring: Keep an eye on real-time soil moisture levels for effective irrigation planning.*
 
-Looks good when you read the features but there is no bckend developed yet.
+
+
+<img width="1512" alt="homepage" src="https://github.com/Rithvik0410/ArecaCool/assets/134826767/d2f87649-72f3-4571-863f-d3ed0c69f925">
