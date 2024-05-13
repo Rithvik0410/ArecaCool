@@ -28,6 +28,4 @@ Features:
 
 *Soil Moisture Monitoring: Keep an eye on real-time soil moisture levels for effective irrigation planning.*
 
-
-
-<img width="1512" alt="homepage" src="https://github.com/Rithvik0410/ArecaCool/assets/134826767/d2f87649-72f3-4571-863f-d3ed0c69f925">
+<img width="1512" alt="home" src="https://github.com/Rithvik0410/ArecaCool/assets/134826767/64957370-62b1-434d-8790-5be4941999ff">
